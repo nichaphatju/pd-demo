@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Agent(salesforce-org-evidence-analyst)",
+      "Agent(salesforce-guidance-validator)",
+      "WebSearch",
+      "WebFetch(domain:architect.salesforce.com)",
+      "WebFetch(domain:developer.salesforce.com)",
+      "WebFetch(domain:help.salesforce.com)",
+      "WebFetch(domain:trust.salesforce.com)"
+    ]
+  }
+}
