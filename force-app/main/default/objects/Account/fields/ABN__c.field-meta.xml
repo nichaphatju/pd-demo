@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>ABN__c</fullName>
+    <label>ABN</label>
+    <description>Stores the Australian Business Number (ABN) for the account.</description>
+    <inlineHelpText>Enter the 11-digit Australian Business Number for this account.</inlineHelpText>
+    <type>Text</type>
+    <length>11</length>
+    <required>false</required>
+    <unique>false</unique>
+    <externalId>false</externalId>
+    <trackTrending>false</trackTrending>
+</CustomField>
