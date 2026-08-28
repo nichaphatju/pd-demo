@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Log Customer Feedback</label>
+    <description>Launches the Log Customer Feedback screen flow to record feedback against this contact.</description>
+    <flowDefinition>Log_Customer_Feedback</flowDefinition>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <type>Flow</type>
+</QuickAction>

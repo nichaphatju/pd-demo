@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <choices>
+        <choiceText>Compliment</choiceText>
+        <dataType>String</dataType>
+        <name>Feedback_Type_Choices</name>
+        <description>Compliment choice for Feedback Type dropdown - represents positive feedback from customers</description>
+        <value>
+            <stringValue>Compliment</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <choiceText>Suggestion</choiceText>
+        <dataType>String</dataType>
+        <name>Feedback_Type_Suggestion</name>
+        <description>Suggestion choice for Feedback Type dropdown - represents improvement ideas or recommendations from customers</description>
+        <value>
+            <stringValue>Suggestion</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <choiceText>Concern</choiceText>
+        <dataType>String</dataType>
+        <name>Feedback_Type_Concern</name>
+        <description>Concern choice for Feedback Type dropdown - represents issues or problems reported by customers</description>
+        <value>
+            <stringValue>Concern</stringValue>
+        </value>
+    </choices>
+    <environments>Default</environments>
+    <interviewLabel>Start Flow</interviewLabel>
+    <label>Start Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordCreates>
+        <locationY>100</locationY>
+        <connector>
+            <targetReference>After_Feedback_Logged</targetReference>
+        </connector>
+        <locationX>302</locationX>
+        <name>Create_Customer_Feedback</name>
+        <description>Creates a Customer_Feedback__c record with data from the Log_Feedback screen, linking it to the Contact via recordId and automatically setting the date received to today</description>
+        <label>Create Customer Feedback</label>
+        <inputAssignments>
+            <field>Contact__c</field>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Feedback_Type__c</field>
+            <value>
+                <elementReference>feedbackType</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Feedback_Notes__c</field>
+            <value>
+                <elementReference>feedbackNotes</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Follow_Up_Required__c</field>
+            <value>
+                <elementReference>followUpRequired</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Date_Received__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Customer_Feedback__c</object>
+    </recordCreates>
+    <screens>
+        <locationY>50</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Create_Customer_Feedback</targetReference>
+        </connector>
+        <allowPause>false</allowPause>
+        <showHeader>true</showHeader>
+        <locationX>176</locationX>
+        <name>Log_Feedback</name>
+        <description>First screen collecting user input for feedback logging - captures feedback type, notes, and follow-up requirement</description>
+        <label>Log Feedback</label>
+        <fields>
+            <isRequired>true</isRequired>
+            <dataType>String</dataType>
+            <name>feedbackType</name>
+            <description>Dropdown field for selecting feedback type from static choices (Compliment, Suggestion, Concern)</description>
+            <choiceReferences>Feedback_Type_Choices</choiceReferences>
+            <choiceReferences>Feedback_Type_Suggestion</choiceReferences>
+            <choiceReferences>Feedback_Type_Concern</choiceReferences>
+            <fieldType>DropdownBox</fieldType>
+            <fieldText>Feedback Type</fieldText>
+        </fields>
+        <fields>
+            <isRequired>false</isRequired>
+            <name>feedbackNotes</name>
+            <description>Large text area for optional feedback notes</description>
+            <fieldType>LargeTextArea</fieldType>
+            <fieldText>Feedback Notes</fieldText>
+        </fields>
+        <fields>
+            <defaultValue>
+                <booleanValue>false</booleanValue>
+            </defaultValue>
+            <dataType>Boolean</dataType>
+            <name>followUpRequired</name>
+            <description>Checkbox field for indicating whether follow-up is required, defaults to unchecked</description>
+            <fieldType>InputField</fieldType>
+            <fieldText>Follow Up Required</fieldText>
+        </fields>
+        <showFooter>true</showFooter>
+    </screens>
+    <screens>
+        <locationY>150</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <showHeader>true</showHeader>
+        <locationX>428</locationX>
+        <name>After_Feedback_Logged</name>
+        <description>Final confirmation screen displaying a static success message to the user after feedback has been logged</description>
+        <label>After Feedback Logged</label>
+        <fields>
+            <isRequired>false</isRequired>
+            <name>confirmationMessage</name>
+            <description>Display text field showing confirmation message that feedback has been logged for this contact</description>
+            <fieldType>DisplayText</fieldType>
+            <fieldText>Thanks - feedback has been logged for this contact.</fieldText>
+        </fields>
+        <showFooter>true</showFooter>
+    </screens>
+    <start>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Log_Feedback</targetReference>
+        </connector>
+        <locationX>50</locationX>
+        <triggerType>None</triggerType>
+    </start>
+    <status>Active</status>
+    <variables>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <dataType>String</dataType>
+        <name>recordId</name>
+        <isCollection>false</isCollection>
+        <description>Input variable that receives the Contact record Id passed from the quick action on the Contact record page - used to link the feedback record to the contact</description>
+    </variables>
+</Flow>

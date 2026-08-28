@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Follow_Up_Required__c</fullName>
+    <label>Follow Up Required</label>
+    <description>Indicates whether this feedback needs a follow-up action with the customer.</description>
+    <inlineHelpText>Check this if the feedback requires a follow-up with the customer.</inlineHelpText>
+    <type>Checkbox</type>
+    <defaultValue>false</defaultValue>
+</CustomField>
