@@ -6,6 +6,17 @@
     <description>Disputes and Claims. Dispute vs Claim is differentiated via Issue Type, not a separate record type.</description>
     <label>Disputes/Claims</label>
     <picklistValues>
+        <picklist>DCC_SLA_Type__c</picklist>
+        <values>
+            <fullName>Dispute</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Claim</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Approval_Level__c</picklist>
         <values>
             <fullName>1</fullName>

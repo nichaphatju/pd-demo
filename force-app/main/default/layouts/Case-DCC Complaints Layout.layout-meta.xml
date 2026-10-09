@@ -37,6 +37,10 @@
                     <field>Stage__c</field>
                 </layoutItems>
                 <layoutItems>
+                    <behavior>Readonly</behavior>
+                    <field>DCC_SLA_Type__c</field>
+                </layoutItems>
+                <layoutItems>
                     <behavior>Required</behavior>
                     <field>Origin</field>
                 </layoutItems>
@@ -227,6 +231,12 @@
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
+    <relatedLists>
+        <relatedList>RelatedChildCaseList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <relatedList>RelatedEmailMessageList</relatedList>
+    </relatedLists>
     <relatedLists>
         <relatedList>RelatedActivityList</relatedList>
     </relatedLists>

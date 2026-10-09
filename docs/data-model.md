@@ -50,6 +50,8 @@ Delivered under PDD-7 (fields) and PDD-8 (record types / layouts). Source of tru
 | Root Cause | `Root_Cause__c` | Dependent picklist (on Issue) | Incorrect Rate → Incorrect Project, Masterfile Setup; Incorrect Quantity → Incorrect Order, Keying Error. |
 | Error Source | `Error_Source__c` | Dependent picklist (on Root Cause) | Incorrect Project → Customer, Other; Masterfile Setup → Pricing Team, Sales, Other; Incorrect Order / Keying Error → Service Centre, Other. |
 
+| SLA Type | `DCC_SLA_Type__c` | Picklist (restricted) | Dispute, Claim, Complaint. Set by the New Dispute/Claim intake flow from Issue Type via `DCC_Issue_Type_Mapping__mdt` (PDD-10). Read-only on DCC layouts. |
+
 Contact Email uses the standard `ContactEmail` field. Trading Region is not yet built (depends on an Account trading-region field that does not exist).
 
 ### Dispute fields
@@ -87,6 +89,23 @@ One or more invoice references against a DCC Case; one record per Case is the Pr
 ### Relationships
 
 - `Case` 1 → * `DCC_Invoice_Numbers__c` (Master-Detail, `Case__c`)
+
+## DCC Issue Type Mapping (`DCC_Issue_Type_Mapping__mdt`)
+
+Custom metadata type mapping a Case `Issue_Type__c` value to the `DCC_SLA_Type__c` to set at intake (PDD-10). Editable without changing the flow.
+
+| Field | API Name | Type | Notes |
+| --- | --- | --- | --- |
+| Issue Type | `Issue_Type__c` | Text(255) | Case Issue_Type__c picklist value. |
+| SLA Type | `SLA_Type__c` | Picklist | Dispute, Claim. |
+
+Seeded records (default; confirm with business): Damage to Property → Claim; Cost Recovery → Dispute; Site Clean-up or Rectification Required → Claim; Rework or Replacement Needed → Claim; Other → Dispute.
+
+## Related configuration
+
+- Queue `DCC_Generic_Intake_Queue` ("DCC - Generic Intake", Case) — fallback owner for intake cases with no Account.
+- Custom Label `DCC_Brand_Name` = "Boral" — brand used in customer acknowledgement emails.
+- Case related lists on DCC layouts (PDD-9): Invoice Numbers (Disputes/Claims), Child Cases, Emails, Activities, Case History, Comments, Files.
 
 ### Out of scope (tracked separately)
 

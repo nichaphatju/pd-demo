@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DCC_SLA_Type__c</fullName>
+    <label>SLA Type</label>
+    <description>DCC SLA classification (Dispute / Claim / Complaint). Set by the New Dispute/Claim intake flow from Issue Type using the DCC_Issue_Type_Mapping__mdt custom metadata. Used to select the SLA process.</description>
+    <inlineHelpText>SLA classification of the case, derived from Issue Type.</inlineHelpText>
+    <type>Picklist</type>
+    <required>false</required>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Dispute</fullName>
+                <default>false</default>
+                <label>Dispute</label>
+            </value>
+            <value>
+                <fullName>Claim</fullName>
+                <default>false</default>
+                <label>Claim</label>
+            </value>
+            <value>
+                <fullName>Complaint</fullName>
+                <default>false</default>
+                <label>Complaint</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

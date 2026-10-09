@@ -37,6 +37,10 @@
                     <field>Stage__c</field>
                 </layoutItems>
                 <layoutItems>
+                    <behavior>Readonly</behavior>
+                    <field>DCC_SLA_Type__c</field>
+                </layoutItems>
+                <layoutItems>
                     <behavior>Required</behavior>
                     <field>Origin</field>
                 </layoutItems>
@@ -270,6 +274,12 @@
         <fields>Source__c</fields>
         <fields>Invoice_Amount__c</fields>
         <relatedList>DCC_Invoice_Numbers__c.Case__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <relatedList>RelatedChildCaseList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <relatedList>RelatedEmailMessageList</relatedList>
     </relatedLists>
     <relatedLists>
         <relatedList>RelatedActivityList</relatedList>

@@ -6,6 +6,13 @@
     <description>Customer complaints.</description>
     <label>Complaints</label>
     <picklistValues>
+        <picklist>DCC_SLA_Type__c</picklist>
+        <values>
+            <fullName>Complaint</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Approval_Level__c</picklist>
         <values>
             <fullName>1</fullName>
