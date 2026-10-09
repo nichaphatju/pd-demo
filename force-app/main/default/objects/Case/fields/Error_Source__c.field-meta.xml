@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Error_Source__c</fullName>
+    <label>Error Source</label>
+    <description>Source of the error. Dependent on Root Cause.</description>
+    <type>Picklist</type>
+    <required>false</required>
+    <valueSet>
+        <controllingField>Root_Cause__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Customer</fullName>
+                <default>false</default>
+                <label>Customer</label>
+            </value>
+            <value>
+                <fullName>Service Centre</fullName>
+                <default>false</default>
+                <label>Service Centre</label>
+            </value>
+            <value>
+                <fullName>Pricing Team</fullName>
+                <default>false</default>
+                <label>Pricing Team</label>
+            </value>
+            <value>
+                <fullName>Sales</fullName>
+                <default>false</default>
+                <label>Sales</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Incorrect Project</controllingFieldValue>
+            <valueName>Customer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incorrect Order</controllingFieldValue>
+            <controllingFieldValue>Keying Error</controllingFieldValue>
+            <valueName>Service Centre</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Masterfile Setup</controllingFieldValue>
+            <valueName>Pricing Team</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Masterfile Setup</controllingFieldValue>
+            <valueName>Sales</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incorrect Project</controllingFieldValue>
+            <controllingFieldValue>Masterfile Setup</controllingFieldValue>
+            <controllingFieldValue>Incorrect Order</controllingFieldValue>
+            <controllingFieldValue>Keying Error</controllingFieldValue>
+            <valueName>Other</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

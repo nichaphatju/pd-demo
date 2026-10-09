@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Issue_Type__c</fullName>
+    <label>Issue Type</label>
+    <description>Type of issue raised. Disputes/Claims only. Required at intake.</description>
+    <type>Picklist</type>
+    <required>false</required>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Damage to Property</fullName>
+                <default>false</default>
+                <label>Damage to Property</label>
+            </value>
+            <value>
+                <fullName>Cost Recovery</fullName>
+                <default>false</default>
+                <label>Cost Recovery</label>
+            </value>
+            <value>
+                <fullName>Site Clean-up or Rectification Required</fullName>
+                <default>false</default>
+                <label>Site Clean-up or Rectification Required</label>
+            </value>
+            <value>
+                <fullName>Rework or Replacement Needed</fullName>
+                <default>false</default>
+                <label>Rework or Replacement Needed</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

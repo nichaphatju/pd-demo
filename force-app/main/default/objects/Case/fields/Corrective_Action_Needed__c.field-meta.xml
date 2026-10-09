@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Corrective_Action_Needed__c</fullName>
+    <label>Corrective Action Needed</label>
+    <description>Indicates a corrective action is needed to prevent recurrence.</description>
+    <type>Checkbox</type>
+    <defaultValue>false</defaultValue>
+</CustomField>

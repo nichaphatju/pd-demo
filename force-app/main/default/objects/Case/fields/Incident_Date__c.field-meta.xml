@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Incident_Date__c</fullName>
+    <label>Incident Date</label>
+    <description>Date the disputed/claimed issue occurred (Date of Issue). Required at intake for Disputes/Claims.</description>
+    <inlineHelpText>Date the issue occurred.</inlineHelpText>
+    <type>Date</type>
+    <required>false</required>
+</CustomField>

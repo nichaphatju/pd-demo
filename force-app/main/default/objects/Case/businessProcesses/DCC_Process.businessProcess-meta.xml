@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BusinessProcess xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DCC_Process</fullName>
+    <description>Case lifecycle for Disputes, Claims and Complaints (DCC).</description>
+    <isActive>true</isActive>
+    <values>
+        <fullName>New</fullName>
+        <default>true</default>
+    </values>
+    <values>
+        <fullName>Acknowledged</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>In Investigation</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>In Negotiation / On Hold</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Awaiting Admin</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Awaiting Customer</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Awaiting Sales</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Awaiting Credit</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Awaiting Service</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Awaiting Production/Ops</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Awaiting Technical</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Pending Release Documents</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Ready To Close</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Pending Approval</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Resolution Finalised</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Closed - Approved</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Closed - Rejected</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Closed - NFI</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Cancelled</fullName>
+        <default>false</default>
+    </values>
+    <values>
+        <fullName>Reopened</fullName>
+        <default>false</default>
+    </values>
+</BusinessProcess>

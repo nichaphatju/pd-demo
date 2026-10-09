@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Closed_By__c</fullName>
+    <label>Closed By</label>
+    <description>User who closed the case. Intended to be populated by automation.</description>
+    <type>Lookup</type>
+    <referenceTo>User</referenceTo>
+    <relationshipName>DCC_Cases_Closed</relationshipName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <required>false</required>
+</CustomField>

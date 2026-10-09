@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Invoice_Number__c</fullName>
+    <label>Invoice Number</label>
+    <description>Primary invoice number for the dispute. Required at intake for Disputes/Claims.</description>
+    <type>Text</type>
+    <length>100</length>
+    <required>false</required>
+</CustomField>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>DCC_Investigation_Required_Fields</fullName>
+    <active>true</active>
+    <description>DCC cases: Account, Contact, Subject and Description are mandatory once the case has moved past Intake/Acknowledgement into the Investigation stage or later.</description>
+    <errorConditionFormula>AND(
+    OR(
+        RecordType.DeveloperName = &quot;Disputes_Claims&quot;,
+        RecordType.DeveloperName = &quot;Complaints&quot;
+    ),
+    NOT(ISBLANK(TEXT(Stage__c))),
+    NOT(ISPICKVAL(Stage__c, &quot;Intake&quot;)),
+    NOT(ISPICKVAL(Stage__c, &quot;Acknowledgement&quot;)),
+    OR(
+        ISBLANK(AccountId),
+        ISBLANK(ContactId),
+        ISBLANK(Subject),
+        ISBLANK(Description)
+    )
+)</errorConditionFormula>
+    <errorMessage>Account, Contact, Subject and Description are required once the case is in the Investigation stage or later.</errorMessage>
+</ValidationRule>

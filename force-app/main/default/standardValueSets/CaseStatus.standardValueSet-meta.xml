@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>New</fullName>
+        <default>true</default>
+        <label>New</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Working</fullName>
+        <default>false</default>
+        <label>Working</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Escalated</fullName>
+        <default>false</default>
+        <label>Escalated</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed</fullName>
+        <default>false</default>
+        <label>Closed</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Acknowledged</fullName>
+        <default>false</default>
+        <label>Acknowledged</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>In Investigation</fullName>
+        <default>false</default>
+        <label>In Investigation</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>In Negotiation / On Hold</fullName>
+        <default>false</default>
+        <label>In Negotiation / On Hold</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Awaiting Admin</fullName>
+        <default>false</default>
+        <label>Awaiting Admin</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Awaiting Customer</fullName>
+        <default>false</default>
+        <label>Awaiting Customer</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Awaiting Sales</fullName>
+        <default>false</default>
+        <label>Awaiting Sales</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Awaiting Credit</fullName>
+        <default>false</default>
+        <label>Awaiting Credit</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Awaiting Service</fullName>
+        <default>false</default>
+        <label>Awaiting Service</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Awaiting Production/Ops</fullName>
+        <default>false</default>
+        <label>Awaiting Production/Ops</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Awaiting Technical</fullName>
+        <default>false</default>
+        <label>Awaiting Technical</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Pending Release Documents</fullName>
+        <default>false</default>
+        <label>Pending Release Documents</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Ready To Close</fullName>
+        <default>false</default>
+        <label>Ready To Close</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Pending Approval</fullName>
+        <default>false</default>
+        <label>Pending Approval</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Resolution Finalised</fullName>
+        <default>false</default>
+        <label>Resolution Finalised</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed - Approved</fullName>
+        <default>false</default>
+        <label>Closed - Approved</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed - Rejected</fullName>
+        <default>false</default>
+        <label>Closed - Rejected</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed - NFI</fullName>
+        <default>false</default>
+        <label>Closed - NFI</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Cancelled</fullName>
+        <default>false</default>
+        <label>Cancelled</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Reopened</fullName>
+        <default>false</default>
+        <label>Reopened</label>
+        <closed>false</closed>
+    </standardValue>
+</StandardValueSet>

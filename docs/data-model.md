@@ -8,6 +8,91 @@ This document tracks custom objects and fields in `force-app/main/default` and t
 | --- | --- | --- | --- |
 | ABN | `ABN__c` | Text(11) | Australian Business Number for the account. |
 
+## Case (standard object) — DCC (Disputes, Claims, Complaints)
+
+Delivered under PDD-7 (fields) and PDD-8 (record types / layouts). Source of truth: Confluence "Data Model" page (linked from PDD-7/PDD-8).
+
+### Status, Stage and Origin
+
+- `Status` (standard value set `CaseStatus`): DCC values added — Acknowledged, In Investigation, In Negotiation / On Hold, Awaiting Admin, Awaiting Customer, Awaiting Sales, Awaiting Credit, Awaiting Service, Awaiting Production/Ops, Awaiting Technical, Pending Release Documents, Ready To Close, Pending Approval, Resolution Finalised, Closed - Approved, Closed - Rejected, Closed - NFI, Cancelled (closed values: the four Closed/Cancelled), Reopened. Existing values (New, Working, Escalated, Closed) retained for non-DCC cases.
+- `Origin` (standard value set `CaseOrigin`): Email2Case and Internal added.
+- `Stage__c`: picklist grouping Status values — Intake (New), Acknowledgement (Acknowledged), Investigation (In Investigation, In Negotiation / On Hold), Waiting (Awaiting…, Pending Release Documents, Ready To Close), Approval (Pending Approval), Resolution (Resolution Finalised), Closed (Closed - …, Cancelled), Reopened (Reopened). Default Intake. Drives the Case Path.
+
+### Business process and record types
+
+- Business process `DCC_Process` — New plus the DCC Status values above.
+- Record type `Disputes_Claims` (Disputes/Claims) — Dispute vs Claim differentiated via `Issue_Type__c`.
+- Record type `Complaints`.
+- Page layouts: `Case-DCC Disputes Claims Layout`, `Case-DCC Complaints Layout`. Paths on `Stage__c` per record type.
+
+### Common fields
+
+| Field | API Name | Type | Notes |
+| --- | --- | --- | --- |
+| Stage | `Stage__c` | Picklist (restricted) | See above. Read-only on DCC layouts (automation-managed). |
+| Customer Acknowledgement Sent | `Customer_Acknowledgement_Sent__c` | Checkbox | |
+| Incident Date | `Incident_Date__c` | Date | "Date of Issue"; required at intake on Disputes/Claims layout. |
+| Closed By | `Closed_By__c` | Lookup(User) | Intended to be set by automation. |
+| Reopen Count | `Reopen_Count__c` | Number(3,0) | |
+| Reopen Reason | `Reopen_Reason__c` | Picklist | Admin Error, Customer Request. |
+| RFI Number | `RFI_Number__c` | Number(18,0) | Disputes/Claims only. |
+| Account Manager | `Account_Manager__c` | Lookup(User) | |
+| Credit Officer | `Credit_Officer__c` | Lookup(User) | Legacy data is free text — needs transformation before migration. |
+| Escalation Level | `Escalation_Level__c` | Picklist | L1, L2, L3. Intended to be set by automation. |
+| Approval Required | `Approval_Required__c` | Checkbox | |
+| Approval Status | `Approval_Status__c` | Picklist | Required, Not Required, Pending, Submitted, Approved, Rejected. |
+| Approval Level | `Approval_Level__c` | Picklist | 1, 2, 3, 4, Auto Approved. Intended to be set by automation. |
+| Approval Date | `Approval_Date__c` | Date | Intended to be set by automation. |
+| Corrective Action Needed | `Corrective_Action_Needed__c` | Checkbox | |
+| Corrective Action | `Corrective_Action__c` | Text(255) | |
+| Issue Type | `Issue_Type__c` | Picklist | Damage to Property, Cost Recovery, Site Clean-up or Rectification Required, Rework or Replacement Needed, Other. Disputes/Claims only; required at intake. |
+| Issue | `Issue__c` | Picklist | Incorrect Rate, Incorrect Quantity. Controls Root Cause. |
+| Root Cause | `Root_Cause__c` | Dependent picklist (on Issue) | Incorrect Rate → Incorrect Project, Masterfile Setup; Incorrect Quantity → Incorrect Order, Keying Error. |
+| Error Source | `Error_Source__c` | Dependent picklist (on Root Cause) | Incorrect Project → Customer, Other; Masterfile Setup → Pricing Team, Sales, Other; Incorrect Order / Keying Error → Service Centre, Other. |
+
+Contact Email uses the standard `ContactEmail` field. Trading Region is not yet built (depends on an Account trading-region field that does not exist).
+
+### Dispute fields
+
+| Field | API Name | Type | Notes |
+| --- | --- | --- | --- |
+| Invoice Number | `Invoice_Number__c` | Text(100) | Primary invoice; required at intake on Disputes/Claims layout. |
+| Invoice Amount | `Invoice_Amount__c` | Currency(16,2) | |
+| Disputed Amount | `Disputed_Amount__c` | Currency(16,2) | |
+| Credit Amount Approved | `Credit_Amount_Approved__c` | Currency(16,2) | |
+| Credit Issued | `Credit_Issued__c` | Checkbox | |
+| Credit Issued Date | `Credit_Issued_Date__c` | Date | |
+| Credit Amount | `Credit_Amount__c` | Currency(16,2) | |
+
+### Validation rules
+
+- `DCC_Investigation_Required_Fields` — on DCC record types, Account, Contact, Subject and Description are required once `Stage__c` is past Intake/Acknowledgement.
+- Intake-required fields (Account, Incident Date, Invoice Number, Issue Type) are enforced as layout-required on the Disputes/Claims layout (UI only), so Email-to-Case creation is not blocked.
+
+## Invoice Number (`DCC_Invoice_Numbers__c`)
+
+One or more invoice references against a DCC Case; one record per Case is the Primary Invoice.
+
+- Sharing model: `ControlledByParent`
+- Name field: Auto Number, format `INV-{000000}` ("Record Name")
+
+| Field | API Name | Type | Required | Notes |
+| --- | --- | --- | --- | --- |
+| Case | `Case__c` | Master-Detail(Case) | Yes | Child relationship name `Invoice_Numbers`. |
+| Invoice Number | `Invoice_Number__c` | Text(100) | Yes | Used for search and matching. |
+| Primary Invoice | `Primary_Invoice__c` | Checkbox | No | Only one per Case should be true (not yet enforced). |
+| Source | `Source__c` | Picklist (restricted) | No | Case Primary Field, Manually Added, Email Parsed. |
+| Invoice Amount | `Invoice_Amount__c` | Currency(16,2) | No | |
+
+### Relationships
+
+- `Case` 1 → * `DCC_Invoice_Numbers__c` (Master-Detail, `Case__c`)
+
+### Out of scope (tracked separately)
+
+- Status → Stage sync automation, primary-invoice sync to Case, single-primary enforcement, Invoice Amount roll-up.
+- DCC permission sets (object/field access, read-only Stage FLS, record type visibility).
+
 ## Customer Feedback (`Customer_Feedback__c`)
 
 Captures quick, informal feedback (compliment, suggestion, or concern) logged against a Contact, without requiring a full Case.

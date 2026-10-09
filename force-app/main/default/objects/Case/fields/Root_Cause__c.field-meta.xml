@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Root_Cause__c</fullName>
+    <label>Root Cause</label>
+    <description>Root cause of the issue. Dependent on Issue.</description>
+    <type>Picklist</type>
+    <required>false</required>
+    <valueSet>
+        <controllingField>Issue__c</controllingField>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Incorrect Project</fullName>
+                <default>false</default>
+                <label>Incorrect Project</label>
+            </value>
+            <value>
+                <fullName>Masterfile Setup</fullName>
+                <default>false</default>
+                <label>Masterfile Setup</label>
+            </value>
+            <value>
+                <fullName>Incorrect Order</fullName>
+                <default>false</default>
+                <label>Incorrect Order</label>
+            </value>
+            <value>
+                <fullName>Keying Error</fullName>
+                <default>false</default>
+                <label>Keying Error</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Incorrect Rate</controllingFieldValue>
+            <valueName>Incorrect Project</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incorrect Rate</controllingFieldValue>
+            <valueName>Masterfile Setup</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incorrect Quantity</controllingFieldValue>
+            <valueName>Incorrect Order</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Incorrect Quantity</controllingFieldValue>
+            <valueName>Keying Error</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>
